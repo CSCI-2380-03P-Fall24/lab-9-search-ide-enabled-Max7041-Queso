@@ -97,34 +97,31 @@ Step 3: Finally, use your two functions above to complete the following in newSo
 */
 
 void swap(double darray[], int i, int j) {
-    double temp = darray[i];
-    darray[i] = darray[j];
-    darray[j] = temp;
+	double temp = darray[i];
+	darray[i] = darray[j];
+	darray[j] = temp;
 }
 
 int minFind(double darray[], int n) {
-    int minIndex = 0;
-    for (int i =  1; i < n; i++){
-        if(darray[i] < darray[minIndex]){
-            minIndex = i;
-        }
-    }
-    
-    return minIndex;
+	int minIndex = 0;
+	for (int i =  1; i < n; i++) {
+		if(darray[i] < darray[minIndex]) {
+			minIndex = i;
+		}
+	}
+
+	return minIndex;
 }
 
 void newSort(double darray[], int n) {
-    for (int i = 0; i < n - 1; i++){
-        
-        int minIndex = i;
+	for (int i = 0; i < n - 1; i++) {
 
-        for (int j = i + 1; j < n; j++){
-            if (darray[j] < darray[minIndex]){
-                minIndex = j;
-            }
-        }
-        swap(darray, i, minIndex);
-    }
+		int minIndex = minFind(darray + i, n - i);
+        
+        minIndex = minIndex + i;
+	
+		swap(darray, i, minIndex);
+	}
 }
 
 
